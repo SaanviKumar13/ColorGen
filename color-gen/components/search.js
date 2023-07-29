@@ -1,19 +1,28 @@
 import React, { useState } from "react";
-
+import openai from "openai";
+import { Configuration } from "openai";
+import { OpenAIApi } from "openai";
 export default function Search() {
+  const configuration = new Configuration({
+    apiKey: process.env.OPENAI_API_KEY,
+  });
 
-  const [input, setInput] = useState('');
+  const openai = new OpenAIApi(configuration);
   const [response, setResponse] = useState('');
+  const [prompt, setPrompt] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
-      const result = await axios.post('/chatgpt', { prompt: input });
-      setResponse(result.data.text);
-    } catch (error) {
-      console.error(error);
-      setResponse('An error occurred while processing your request.');
+      const result = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt: `${prompt} colors in hex`,
+        temperature: 0.5,
+        max_tokens: 500,
+      });
+      setResponse(result.data.choices[0].text);
+    } catch (e) {
+      setResponse("Something is going wrong, Please try again.");
     }
   };
   
@@ -26,8 +35,8 @@ export default function Search() {
           id="input"
           placeholder="Search the type of colour you want"
           className="absolute border border-black text-xs text-left h-12 w-[60vw] rounded-xl p-2 left-20 top-64 indent-2"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
+          value={prompt}
+          onChange={(e) => setPrompt(e.target.value)}
         />
        <div className="absolute z-10 left-1/2 ml-20 top-64 mt-3 md:mt-2">
          <button type='submit' onSubmit={(e)=>handleSubmit(e)}>

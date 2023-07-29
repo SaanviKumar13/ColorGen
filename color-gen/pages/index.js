@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { Inter } from "@next/font/google";
-import Search from "@/components/Search";
+import Search from "@/components/search";
 
 export default function Home() {
   return (
