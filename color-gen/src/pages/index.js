@@ -9,7 +9,7 @@ export default function Home() {
         <title>ColorGen</title>
         <meta name="description" content="AI Color Generator" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="favicon.ico" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={"bg-white min-h-screen "}>
         <div className="m-5">
