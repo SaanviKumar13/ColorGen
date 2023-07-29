@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { motion } from "framer-motion"
 
 const ColorGenerator = () => {
   const [input, setInput] = useState('');
   const [palette, setPalette] = useState([]);
-
-  const API_KEY="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"
+  // const [copy,setCopy]=('')
   async function fetchData(){
     const response=await fetch("https://api.openai.com/v1/completions",{
         method:"POST",
@@ -20,11 +19,18 @@ const ColorGenerator = () => {
         })
     })
     const data= await response.json();
+    console.log(data);
     const colorsString = data.choices[0].text.replace(/\n|\s/g, '');
     const validJSONString = colorsString.replace(/'/g, '"');
+    console.log(validJSONString);
     const colorsArray = JSON.parse(validJSONString);
     setPalette(colorsArray);
     
+    // const handleCopy=()=>{
+    //   navigator.clipboard.writeText(copyColor)
+    //   .then(()=>setCopy("COPIED!"))
+    //   .catch(()=>setCopy("Try Again"));
+    // }
 }
 
   return (
@@ -34,24 +40,26 @@ const ColorGenerator = () => {
         type="text"
         id="prompt"
         placeholder='Describe your color palette'
-        className='font-body text-sm border border-black rounded-full indent-4 p-1 w-96'
+        className='font-body text-sm border border-black rounded-full indent-4 p-1 w-[80vw]'
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
     </div>
-    <button onClick={fetchData} className='font-body border border-black hover:bg-black hover:text-white rounded-full px-3 mt-5'>Generate Palette</button>
+    <button onClick={fetchData} className='absolute left-1/4 font-body border border-black hover:bg-black hover:text-white rounded-full px-3 mt-5'>Generate Palette</button>
     <div>
       {palette.map((color, index) => (
-        <div
+        <motion.div
+          whileHover={{ scale: 1.07 }}
           key={index}
           style={{
             backgroundColor: color,
-            width: '50px',
-            height: '50px',
+            width: '200px',
+            height: '200px',
             display: 'inline-block',
-            margin: '5px',
+            margin: '10px',
           }}
-        ></div>
+          className='relative top-16 left-10 md:left-0 rounded-lg '
+        ></motion.div>
       ))}
     </div>
   </div>
