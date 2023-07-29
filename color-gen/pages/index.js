@@ -1,6 +1,5 @@
 import Head from "next/head";
-import Search from "@/components/search";
-
+import ColorGenerator from "@/components/ColorGenerator";
 export default function Home() {
   return (
     <>
@@ -19,8 +18,9 @@ export default function Home() {
             A smarter way to find colors
           </p>
         </div>
-        <Search />
+        <ColorGenerator />
       </main>
     </>
   );
 }
+
