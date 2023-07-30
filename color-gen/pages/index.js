@@ -36,7 +36,7 @@ export default function Home() {
               hidden: { opacity: 0, y: -40 },
               visible: { opacity: 1, y: 0 },
             }}
-            className="absolute top-80 mt-32 right-[12%] mr-4 md:mt-28 md:mr-9 font-body text-xl"
+            className="absolute top-80 mt-32 right-[12%] mr-4 md:mt-28 md:mr-14 font-body text-xl"
           >
             A smarter way to find colors
           </motion.p>
