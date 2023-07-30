@@ -10,9 +10,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="favicon.ico" />
       </Head>
-      <main className={"bg-white min-h-screen "}>
+      <main>
         <ColorGenerator />
-        <div className="">
+        <div>
           <motion.h1
             initial="hidden"
             whileInView="visible"
@@ -39,6 +39,10 @@ export default function Home() {
             className="absolute top-80 mt-32 right-[12%] mr-4 md:mt-28 md:mr-14 font-body text-xl"
           >
             A smarter way to find colors
+            <br />
+            <span className="absolute text-sm right-[0%] ">
+              Made with &#x1F499; by Saanvi.
+            </span>
           </motion.p>
         </div>
       </main>
