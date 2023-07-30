@@ -5,11 +5,12 @@ import Image from "next/image";
 const ColorGenerator = () => {
   const [input, setInput] = useState("");
   const [palette, setPalette] = useState([]);
+  const apiKey = process.env.NEXT_PUBLIC_OPEN_AI_API;
   async function fetchData() {
     const response = await fetch("https://api.openai.com/v1/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${process.env.OPEN_AI_API} `,
+        Authorization: `Bearer ${apiKey} `,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -18,7 +19,6 @@ const ColorGenerator = () => {
         max_tokens: 800,
       }),
     });
-
     const data = await response.json();
     console.log(data);
     const colorsString = data.choices[0].text.replace(/\n|\s|`/g, "");
