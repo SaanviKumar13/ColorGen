@@ -11,7 +11,8 @@ export default function Home() {
         <link rel="icon" href="favicon.ico" />
       </Head>
       <main className={"bg-white min-h-screen "}>
-        <div className="m-5">
+        <ColorGenerator />
+        <div className="">
           <motion.h1
             initial="hidden"
             whileInView="visible"
@@ -21,9 +22,10 @@ export default function Home() {
               hidden: { opacity: 0, y: -40 },
               visible: { opacity: 1, y: 0 },
             }}
-            className="font-title text-7xl md:text-8xl"
+            className="absolute text-right top-72 right-[15%] font-title text-5xl mt-12 md:text-7xl"
           >
-            Color Generator
+            Color
+            <br className="md:hidden" /> Generator
           </motion.h1>
           <motion.p
             initial="hidden"
@@ -34,12 +36,11 @@ export default function Home() {
               hidden: { opacity: 0, y: -40 },
               visible: { opacity: 1, y: 0 },
             }}
-            className="font-body mt-3 text-xl ml-3"
+            className="absolute top-80 mt-32 right-[12%] mr-4 md:mt-28 md:mr-9 font-body text-xl"
           >
             A smarter way to find colors
           </motion.p>
         </div>
-        <ColorGenerator />
       </main>
     </>
   );

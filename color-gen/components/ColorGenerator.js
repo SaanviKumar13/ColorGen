@@ -4,12 +4,11 @@ import { motion } from "framer-motion";
 const ColorGenerator = () => {
   const [input, setInput] = useState("");
   const [palette, setPalette] = useState([]);
-
   async function fetchData() {
     const response = await fetch("https://api.openai.com/v1/completions", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${API_KEY} `,
+        Authorization: `Bearer ${process.env.OPEN_AI_API} `,
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
@@ -21,46 +20,52 @@ const ColorGenerator = () => {
 
     const data = await response.json();
     console.log(data);
-    const colorsString = data.choices[0].text.replace(/\n|\s/g, "");
-    const validJSONString = colorsString.replace(/'/g, "");
+    const colorsString = data.choices[0].text.replace(/\n|\s|`/g, "");
+    const validJSONString = colorsString.replace(/'/g, '"');
     console.log(validJSONString);
     const colorsArray = JSON.parse(validJSONString);
-    setPalette(colorsArray);
+    setPalette(colorsArray.slice(0, 6));
   }
 
   return (
-    <div className="m-5">
+    <div className="w-screen h-screen">
+      <div className="z-0 flex flex-col md:flex-row h-[100vh]">
+        {palette.map((color, index) => (
+          <motion.div
+            onClick={() =>
+              navigator.clipboard.writeText(color).then(alert("Copied!"))
+            }
+            whileHover={{ scaleX: 1.1 }}
+            key={index}
+            style={{
+              backgroundColor: color,
+            }}
+            className="w-full h-full"
+          >
+            <motion.p
+              whileHover={{ scale: 1.1 }}
+              className="relative cursor-pointer top-16 font-body m-5 md:top-2 lg:ml-9 bg-white w-fit rounded-full px-1 text-xs"
+            >
+              {color}
+            </motion.p>
+          </motion.div>
+        ))}
+      </div>
+
       <div>
         <input
           type="text"
           id="prompt"
-          placeholder="Describe your color palette"
-          className="font-body text-sm border border-black rounded-full indent-4 p-1 w-[80vw]"
+          placeholder="What's your mood?"
+          className="absolute top-56 mt-10 left-6 md:left-16 font-body text-xl border border-black rounded-full indent-4 p-1 h-11 w-[80vw]"
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-      </div>
-      <button
-        onClick={fetchData}
-        className="absolute left-1/4 font-body border border-black hover:bg-black hover:text-white rounded-full px-3 mt-5"
-      >
-        Generate Palette
-      </button>
-      <div>
-        {palette.map((color, index) => (
-          <motion.div
-            whileHover={{ scale: 1.07 }}
-            key={index}
-            style={{
-              backgroundColor: color,
-              width: "200px",
-              height: "200px",
-              display: "inline-block",
-              margin: "10px",
-            }}
-            className="relative top-16 left-10 md:left-0 rounded-lg "
-          ></motion.div>
-        ))}
+        <div className="absolute cursor-pointer left-3/4 top-56 mt-12 md:ml-10 lg:ml-10">
+          <button onClick={fetchData}>
+            <img src="/search.png" alt="search" className="w-6 md:w-7 " />
+          </button>
+        </div>
       </div>
     </div>
   );
