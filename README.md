@@ -13,4 +13,6 @@
 You can check out the deployed application on https://color-generator-topaz.vercel.app/
 
 Hope you have fun using it :)
- 
+
+## Video of the working
+[screen-capture.webm](https://github.com/SaanviKumar13/kzilla-internal-hackathon/assets/113087236/b9ae92ef-acd6-4faf-97d4-e002724ba3ff)
