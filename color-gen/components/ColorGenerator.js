@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 const ColorGenerator = () => {
   const [input, setInput] = useState("");
@@ -63,7 +64,7 @@ const ColorGenerator = () => {
         />
         <div className="absolute cursor-pointer left-3/4 top-56 mt-12 md:ml-10 lg:ml-10">
           <button onClick={fetchData}>
-            <img src="/search.png" alt="search" className="w-6 md:w-7 " />
+            <Image src="/search.png" alt="search" className="w-6 md:w-7 " />
           </button>
         </div>
       </div>
