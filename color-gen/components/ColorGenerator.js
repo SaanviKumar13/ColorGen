@@ -64,7 +64,13 @@ const ColorGenerator = () => {
         />
         <div className="absolute cursor-pointer left-3/4 top-56 mt-12 md:ml-10 lg:ml-10">
           <button onClick={fetchData}>
-            <Image src="/search.png" alt="search" className="w-6 md:w-7 " />
+            <Image
+              width={24}
+              height={24}
+              src="/search.png"
+              alt="search"
+              className="w-6 md:w-7 "
+            />
           </button>
         </div>
       </div>
