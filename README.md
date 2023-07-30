@@ -4,9 +4,10 @@
  Or maybe just type in random words, songs or even names of people to see what color palette is asoociated with it :)
 
  ## Layout
- ![image](https://github.com/SaanviKumar13/kzilla-internal-hackathon/assets/113087236/f9c36af1-3d6d-4723-b7cb-7323b6f59212)
+![image](https://github.com/SaanviKumar13/kzilla-internal-hackathon/assets/113087236/dae3b398-1e25-45da-b5ce-0f672aad1674)
 
- ![image](https://github.com/SaanviKumar13/kzilla-internal-hackathon/assets/113087236/a7defce8-40af-4ab5-a954-7e52acbda3e6)
+![image](https://github.com/SaanviKumar13/kzilla-internal-hackathon/assets/113087236/0859c241-c85d-48fb-bf99-ca7aef7899bf)
+
 
 ## Deployed
 You can check out the deployed application on https://color-generator-topaz.vercel.app/
