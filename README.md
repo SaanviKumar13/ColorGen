@@ -1,7 +1,8 @@
 # Color-Gen
  Let me introduce you to a chatGPT powered color palette generator. You can type anything and color-gen will display a palette of the same for you.
+
  The best part is that you can also copy the hex codes to use them in your project.
- Or maybe just type in random words, songs or even names of people to see what color palette is asoociated with it :)
+ Or maybe tou can just type in random words, songs or even names of people to see what color palette is associated with it :)
 
  ## Layout
 ![image](https://github.com/SaanviKumar13/kzilla-internal-hackathon/assets/113087236/dae3b398-1e25-45da-b5ce-0f672aad1674)
